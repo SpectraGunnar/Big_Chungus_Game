@@ -7,10 +7,11 @@ import java.util.Arrays;
  * Creates a chungus sprite and its animation
  */
 public class Chungus {
-    private int thicc, tall, chungx;;
-    private double xpos, ypos;
-    private ArrayList<Sprite> frames;
+    int thicc, tall, chungx;
     private Sprite chungus, chungus2, chungus3, chungus4;
+    private double xpos, ypos;
+    ArrayList<Sprite> frames;
+
     private Sprite[] frame;
 
     /**
@@ -21,8 +22,8 @@ public class Chungus {
         frames = new ArrayList<>();
         xpos = 100.0;
         ypos = 210.0;
-        thicc = 50;
-        tall = 50;
+        thicc = 55;
+        tall = 55;
         chungx = 0;
 
         chungus = new Sprite();
@@ -31,13 +32,7 @@ public class Chungus {
         chungus2 = new Sprite();
         chungus2.setImage( "file:resources/chungus2.png", thicc, tall );
         chungus2.setPos( xpos, ypos );
-        chungus3 = new Sprite();
-        chungus3.setImage( "file:resources/chungus1.png", thicc, tall );
-        chungus3.setPos( xpos, ypos );
-        chungus4 = new Sprite();
-        chungus4.setImage( "file:resources/chungus2.png", thicc, tall );
-        chungus4.setPos( xpos, ypos );
-        frame = new Sprite[] { chungus, chungus2, chungus3, chungus4 };
+        frame = new Sprite[] { chungus, chungus2 };
         frames.addAll( Arrays.asList(frame) );
     }
 
@@ -47,7 +42,7 @@ public class Chungus {
 
     public Sprite getFrame() {
 
-        if ( chungx > 3 ) {
+        if ( chungx > 1 ) {
             chungx = 0;
         }
 

@@ -74,7 +74,7 @@ public class OmegaApp extends Application {
 
         scene.setOnKeyPressed( e -> {
             if ( !ready ) {
-                Stage gameStage = new Stage();
+                //Stage gameStage = new Stage();
                 BigChungus game = new BigChungus();
                 ready = true;
                 try {

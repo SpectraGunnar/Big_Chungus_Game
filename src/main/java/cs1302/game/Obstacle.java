@@ -15,19 +15,11 @@ public class Obstacle {
      */
     public Obstacle( boolean isBottom, int size ) {
         this.obstacle = new Sprite();
-        // create if/esle this.obstacle
-
-        /**
         if ( isBottom ) {
             this.obstacle.setImage( "file:resources/pipeUP.png", 70, size );
         } else {
             this.obstacle.setImage( "file:resource/pipeDOWN.png", 70, size );
         }
-        */
-
-        this.obstacle.setImage( isBottom? "file:resources/pipeUP.png" : "file:resource/pipeDOWN.png"
-        , 70, size );
-
         this.xlen = 70;
         this.ylen = size;
         this.xpos = 420;

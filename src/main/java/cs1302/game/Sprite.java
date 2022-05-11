@@ -7,6 +7,7 @@ import javafx.geometry.Rectangle2D;
 
 /**
  * Sprite Object class; used to create Sprite Objects.
+ * Took some inspired liberties from tonysaavedra.
  */
 public class Sprite {
     private double xlen, ylen, xpos, ypos, xrate, yrate;
@@ -21,6 +22,16 @@ public class Sprite {
         this.ypos = 0.0;
         this.yrate = 0.0;
     }
+
+    /**
+     * Changes sprite's position
+     *
+     * @param amount - the amount the rate increases for Sprites.
+     */
+    public void move( double amount ) { // update
+        xpos += xrate * amount;
+        ypos += yrate * amount;
+    } // move
 
     /**
      * Sets the Image of the certain Sprite.
@@ -39,11 +50,33 @@ public class Sprite {
     } // setImage
 
     /**
+     * Checks if the Big Chungus makes contact with another sprite.
+     *
+     * @param Joe - the sprite we might usee.
+     * @return true - if BigChungus intersects.
+     */
+    public boolean makesContactWith( Sprite Joe ) {
+        if ( Joe.getHitBox().intersects(this.getHitBox()) ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * Gets X length of the sprite.
      */
     public double getXlen() {
         return xlen;
     } // getXlen
+
+    /**
+     * Sets the hitbox of the sprite.
+     */
+    public Rectangle2D getHitBox() {
+        Rectangle2D Obama = new Rectangle2D( xpos, ypos, xlen, ylen );
+        return Obama;
+    } // getHitbob
 
     /**
      * Sets the position of designated Sprite to a certain x and y.
@@ -68,7 +101,7 @@ public class Sprite {
      * Gets the Y position of the Sprite
      */
     public double getYpos() {
-        return ypos;
+        return this.ypos;
     } // getYpos
 
     /**
@@ -116,13 +149,5 @@ public class Sprite {
     public void drawImage( GraphicsContext spriteGC ) {
         spriteGC.drawImage( image, xpos, ypos );
     } // drawImage
-
-    /**
-     * Changes sprite's position
-     */
-    public void move( double amount ) { // update
-        xpos += xrate * amount;
-        ypos += yrate * amount;
-    } // move
 
 } // Sprite
