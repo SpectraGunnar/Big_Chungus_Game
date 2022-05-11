@@ -1,4 +1,22 @@
-HELLO GOVNA 
+BIG CHUNGUS - FLAPPY BIRD GAME.      Gunnar Balch
+
+ALL ART/ SPRITES WERE DESIGNED BY ME IN PHOTOSHOP, I MAY CHOOSE NOT TO SITE IMAGES FROM GOOGLE USED ON MY .PNG FILES BECAUSE ALL WERE ALTERED IN A TRANSFORMATIVE MANNER TO CREATE UNIQUE IMAGES
+
+      ~ Players press keys to make Big Chungus "flap" in order to avoid obstacles and the ground they see in-game.
+   
+         THE GAMEPLAY EXPERIENCE
+          ~ Upon launching the App players are greeted with a pre-Game screen, players press a key to load the game view.
+          ~ Players will control a BigChungus by pressing a key to make him jump in-game, increasing his altitude in order to avoid obstacles.
+          ~ Players earn a point by pressing a key after making it passed an obstacle successfully. An interesting Mechanic, but I may in the future want           
+            to grant points the moment players pass an obstacle rather than awaiting a keypress.
+          ~ The Game is ended when BigChungus dies via: making contact with the ground( y > height of game ) or with an Obstacle ( ChungusX == ObstacleX).
+          ~ After the game is ended Players are shown a "You died" message with a note telling Users to restart by pressing a key once more.
+          ~ When a game is restarted all the sprites and Children of the root are refreshed to what id call the "post-pre-game screen" and replays start.
+          
+         BUGS / ANOMALIES
+          ~ helicopter obstacle seems to appear invisible and cause game to freeze when BigChungus sprite "touches" it. 
+             
+         
 
 .. project information
 .. |title| replace:: Omega
