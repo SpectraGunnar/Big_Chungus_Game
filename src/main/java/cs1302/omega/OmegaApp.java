@@ -38,7 +38,6 @@ public class OmegaApp extends Application {
     public void start(Stage stage) {
 
         Pane root = new Pane();
-
         Rectangle background = new Rectangle(420, 680);
         background.setFill(Color.rgb( 80, 100, 200 ));
 

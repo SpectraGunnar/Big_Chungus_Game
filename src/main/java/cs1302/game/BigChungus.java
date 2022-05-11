@@ -21,42 +21,35 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.text.*;
 
-//import javafx.util.Duration;
 import java.lang.*;
 import javafx.animation.AnimationTimer;
-//import javafx.animation.FadeTransition;
-//import javafx.animation.ParallelTransition;
 
 import javafx.scene.paint.Color;
+
 /**
  * Player plays a version of Flappy Bird with a Big Chungus Aesthetic.
  * Players press the space bar to jump in between pipes.
  *
  */
 public class BigChungus extends Application { // did extend GAME
-    private int DEF_X = 420;
-    private int DEF_Y = 680;
-    private int GAME_SCORE = 0;
+    private int dEFx = 420;
+    private int dEFy = 680;
     private int numFlops = 0;
     private double totalTime, momentTime;
-    private boolean didStart, hitO, hitG, gameEnd, keyPressed;
-
+    private boolean didStart, hitO, gameEnd, keyPressed;
     private long currentTime;
-
     private ImageView endGame;
     private Text readyText, scoreText, instructions;
     private Group root;
     private VBox other;
     private GraphicsContext backGC, chungusGC;
-
     private Sprite chungSprite, ground, ground2;
     private Chungus chungus;
-
     private AnimationTimer gravity;
     private ArrayList<Obstacle> obstacles;
 
     /**
-     * BigCHungus Play  method
+     * BigCHungus play/start method.
      */
     @Override
     public void start(Stage stage) throws Exception {
@@ -64,14 +57,14 @@ public class BigChungus extends Application { // did extend GAME
         other = new VBox();
         stage.setTitle("BigChungus Game");
         stage.setResizable(false);
-        Canvas canvas = new Canvas( DEF_X, DEF_Y );
-        Canvas chungusCan = new Canvas( DEF_X, DEF_Y );
+        Canvas canvas = new Canvas( dEFx, dEFy );
+        Canvas chungusCan = new Canvas( dEFx, dEFy );
         backGC = canvas.getGraphicsContext2D();
         chungusGC = chungusCan.getGraphicsContext2D();
         Image backgroundImage = new Image("file:resources/background.png");
         ImageView background = new ImageView( backgroundImage );
-        background.setFitWidth( DEF_X );
-        background.setFitHeight( DEF_Y );
+        background.setFitWidth( dEFx );
+        background.setFitHeight( dEFy );
         background.setPreserveRatio( false );
         // creates ground
         ground = new Sprite();
@@ -80,18 +73,16 @@ public class BigChungus extends Application { // did extend GAME
         // creates Obstacles
         obstacles = new ArrayList<>();
         setObstacles();
-        // creates
         chungus = new Chungus();
         chungSprite = chungus.getChungus();
         chungSprite.drawImage( backGC );
         root.getChildren().addAll( background, canvas, chungusCan, scoreText, other );
-        Scene scene = new Scene(root, DEF_X, DEF_Y );
+        Scene scene = new Scene(root, dEFx, dEFy );
         scene.setOnKeyPressed( e -> {
             if ( !hitO ) {
                 if ( !didStart ) {
                     other.getChildren().clear();
                     System.out.println("Player is ready apparantly");
-                    // start animation ()
                     didStart = true;
                     numFlops = 0;
                 } else {
@@ -108,7 +99,6 @@ public class BigChungus extends Application { // did extend GAME
                     root.getChildren().remove( other );
                     root.getChildren().clear();
                     root.getChildren().addAll( background, canvas, chungusCan, scoreText );
-                    // chungusSprite.setVelocity( 0, -250 );
                     if ( gameEnd ) {
                         scoreText.setText("0");
                         restart();
@@ -122,6 +112,9 @@ public class BigChungus extends Application { // did extend GAME
         startShit();
     } //start
 
+    /**
+     * When called restarts the game, essentially acts as a start method than can be recalled.
+     */
     private void restart() {
         root.getChildren().remove(endGame);
         root.getChildren().add( other );
@@ -152,21 +145,20 @@ public class BigChungus extends Application { // did extend GAME
     public void startShit() {
         initialTime = System.nanoTime();
         gravity = new AnimationTimer() {
-
                 public void handle( long present ) {
                     totalTime = ( present - initialTime ) / 1000000000.0;
                     initialTime = present;
-                    backGC.clearRect( 0, 0, DEF_X, DEF_Y );
-                    chungusGC.clearRect( 0, 0, DEF_X, DEF_Y );
+                    backGC.clearRect( 0, 0, dEFx, dEFy );
+                    chungusGC.clearRect( 0, 0, dEFx, dEFy );
                     // moving the ground sprites
                     ground.drawImage( backGC );
                     ground2.drawImage( backGC );
                     ground.move(2.5);
                     ground2.move(2.5);
-                    if ( ground.getXpos() < -( DEF_X - 1 ) ) {
+                    if ( ground.getXpos() < -( dEFx - 1 ) ) {
                         ground.setPos( ground2.getXpos() + ground2.getXlen(), 530 );
                     }
-                    if ( ground2.getXpos() < -( DEF_X - 1 ) ) {
+                    if ( ground2.getXpos() < -( dEFx - 1 ) ) {
                         ground2.setPos( ground.getXpos() + ground.getXlen(), 530 );
                     } // if / else if
                     // Checking the Tine between Spaces
@@ -180,42 +172,16 @@ public class BigChungus extends Application { // did extend GAME
                         } // for
                         if ( obstacles.size() > 0 ) {
                             Sprite obs = obstacles.get( obstacles.size() - 1 ).getObstacle();
-                            if ( obs.getXpos() == DEF_X / 2 - 100 ) {
+                            if ( obs.getXpos() == dEFx / 2 - 100 ) {
                                 setObstacles();
                             } else if ( obs.getXpos() <= -obs.getXlen() ) {
                                 obstacles.remove(0);
                                 obstacles.remove(0);
                             } // else if
                         } // IF
-                        for ( Obstacle obstacle : obstacles ) {
-                            if ( chungSprite.getXpos() ==  obstacle.getObstacle().getXpos() ) {
-                                getJumps();
-                            } // if chung gets a point
-                            if ( chungSprite.makesContactWith( obstacle.getObstacle() ) ) {
-                                hitO = true;
-                                System.out.println("You hit something pal");
-                                instructions.setText("Press Space Again to retry");
-                                instructions.setFont( Font.font("Calibri", FontWeight.MEDIUM, 15) );
-                                instructions.setLayoutX( 120 );
-                                instructions.setLayoutY( 350 );
-                                instructions.setFill( Color.BLACK );
-                                root.getChildren().addAll(endGame, instructions);
-                                gameEnd = true;
-                                gravity.stop();
-                            } else {
-                                hitO = false;
-                            }
-                        } // for
-                        if ( chungSprite.getYpos() > 680 ) {
-                            instructions.setText("Press Space Again to retry");
-                            instructions.setFont( Font.font("Calibri", FontWeight.MEDIUM, 15) );
-                            instructions.setLayoutX( 120 );
-                            instructions.setLayoutY( 350 );
-                            instructions.setFill( Color.BLACK );
-                            root.getChildren().addAll(endGame, instructions);
-                            gameEnd = true;
-                            gravity.stop();
-                        }
+
+                        // CHECK IF CHUNGUS COLLIDES
+                        checkCollision();
                     } // if start?
                 } // handle
             }; // gravity AnimationTimer
@@ -223,36 +189,72 @@ public class BigChungus extends Application { // did extend GAME
     } // startSHit
 
     /**
+     * Checks if Chungus collided with the ground or an obstacle.
+     */
+    void checkCollision() {
+        for ( Obstacle obstacle : obstacles ) {
+            if ( chungSprite.getXpos() ==  obstacle.getObstacle().getXpos() ) {
+                getJumps();
+            } // if chung gets a point
+            if ( chungSprite.makesContactWith( obstacle.getObstacle() ) ) {
+                hitO = true;
+                System.out.println("You hit something pal");
+                instructions.setText("Press Space Again to retry");
+                instructions.setFont( Font.font("Calibri", FontWeight.MEDIUM, 15) );
+                instructions.setLayoutX( 120 );
+                instructions.setLayoutY( 350 );
+                instructions.setFill( Color.BLACK );
+                root.getChildren().addAll(endGame, instructions);
+                gameEnd = true;
+                gravity.stop();
+            } else {
+                hitO = false;
+            }
+        } // for
+        if ( chungSprite.getYpos() > 680 ) {
+            instructions.setText("Press Space Again to retry");
+            instructions.setFont( Font.font("Calibri", FontWeight.MEDIUM, 15) );
+            instructions.setLayoutX( 120 );
+            instructions.setLayoutY( 350 );
+            instructions.setFill( Color.BLACK );
+            root.getChildren().addAll(endGame, instructions);
+            gameEnd = true;
+            gravity.stop();
+        }
+    } // checkCollision
+
+    /**
      * Reads time Passed and enacts gravity on BigChungus.
      */
     private void spaceTimer() {
-         long diff = ( System.currentTimeMillis() - currentTime ) / 300;
-                    if ( diff >= .001 && keyPressed ) {
-                        keyPressed = false;
-                        chungSprite.setRate( 0, 175 );
-                        chungSprite.drawImage( chungusGC );
-                        chungSprite.move( totalTime );
-                        System.out.println("BRUH");
-                    } else {
-                        // Animating the Chungus movement.
-                        chungSprite.drawImage( chungusGC );
-                        chungSprite.move( totalTime );
-                        momentTime += 0.15; // accleration of gravity
+        long diff = ( System.currentTimeMillis() - currentTime ) / 300;
+        if ( diff >= .01 && keyPressed ) {
+            keyPressed = false;
+            chungSprite.setRate( 0, 175 );
+            chungSprite.drawImage( chungusGC );
+            chungSprite.move( totalTime );
+            System.out.println("BRUH");
+        } else {
+            // Animating the Chungus movement.
+            chungSprite.drawImage( chungusGC );
+            chungSprite.move( totalTime );
+            momentTime += 0.15; // accleration of gravity
 
-                        if ( momentTime > 0.60  && keyPressed) {
-                            chungSprite.setRate( 0, -175 );
-                            momentTime = 0;
-                        } // if
+            if ( momentTime > 0.60  && keyPressed) {
+                chungSprite.setRate( 0, -175 );
+                momentTime = 0;
+            } // if
 
-                    } // if/ else     done with timing Space presses
+        } // if/ else     done with timing Space presses
     } // spaceTimer
 
     /**
-     * gets the number of key presses
+     * gets the number of key presses.
      */
     private void getJumps() {
         numFlops += 1;
     }
+
     /**
      * Constructs and intitializes the Sprites apearing in Game.
      */
@@ -303,7 +305,7 @@ public class BigChungus extends Application { // did extend GAME
     } // setSprites
 
     /**
-     * Constructs and Adds the Obstacles
+     * Constructs and Adds the Obstacles to kill CHungus.
      */
     private void setObstacles() {
         Random rand = new Random();

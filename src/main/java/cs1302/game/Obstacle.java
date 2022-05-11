@@ -1,7 +1,7 @@
 package cs1302.game;
 
 /**
- * Initializes Obstacles: there loacations, sizes, and state are determined
+ * Initializes Obstacles: there loacations, sizes, and state are determined.
  */
 public class Obstacle {
     private double xlen, ylen, xpos, ypos;
@@ -10,7 +10,7 @@ public class Obstacle {
     /**
      * Obstacle constructor; Constructs the Obstacle sprite.
      *
-     * @param pointsUp - is true if the Obstacle points up, false otherwise.
+     * @param isBottom - is true if the Obstacle points up, false otherwise.
      * @param size - the lenghth/position of the Obstacle
      */
     public Obstacle( boolean isBottom, int size ) {
@@ -34,7 +34,7 @@ public class Obstacle {
     /**
      * Gets the Obstacle sprite that was constrcuted in the {@code Obstacle} constructor.
      *
-     * @returns obstacle - the obstacle object.
+     * @return obstacle - the obstacle object.
      */
     public Sprite getObstacle() {
         return obstacle;

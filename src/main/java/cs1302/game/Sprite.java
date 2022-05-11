@@ -24,7 +24,7 @@ public class Sprite {
     }
 
     /**
-     * Changes sprite's position
+     * Changes sprite's position.
      *
      * @param amount - the amount the rate increases for Sprites.
      */
@@ -65,6 +65,8 @@ public class Sprite {
 
     /**
      * Gets X length of the sprite.
+     *
+     * @return the horizontal length.
      */
     public double getXlen() {
         return xlen;
@@ -72,6 +74,8 @@ public class Sprite {
 
     /**
      * Sets the hitbox of the sprite.
+     *
+     * @return the Rectangular Hitbox for the sprite.
      */
     public Rectangle2D getHitBox() {
         Rectangle2D Obama = new Rectangle2D( xpos, ypos, xlen, ylen );
@@ -92,13 +96,17 @@ public class Sprite {
 
     /**
      * Gets the X position of the Sprite.
+     *
+     * @return the horizontal x position.
      */
     public double getXpos() {
         return xpos;
     } // getXpos
 
     /**
-     * Gets the Y position of the Sprite
+     * Gets the Y position of the Sprite.
+     *
+     * @return the vertical y position
      */
     public double getYpos() {
         return this.ypos;
@@ -118,13 +126,17 @@ public class Sprite {
 
     /**
      * Gets the rate at which the Sprite moves horizontally.
+     *
+     * @return the horizontal rate of change.
      */
     public double getXrate() {
         return xrate;
     } // getXrate
 
     /**
-     * Gets the rat at which the Sprite moves Vertically..
+     * Gets the rat at which the Sprite moves Vertically.
+     *
+     * @return the vertical rate of change.
      */
     public double getYrate() {
         return yrate;
@@ -142,7 +154,7 @@ public class Sprite {
     } // changeRate
 
     /**
-     * Creates the GraphicsContext for the Sprite by inheriting GraphicsContext
+     * Creates the GraphicsContext for the Sprite by inheriting GraphicsContext.
      *
      * @param spriteGC - the GraphicsContext for the sprite.
      */

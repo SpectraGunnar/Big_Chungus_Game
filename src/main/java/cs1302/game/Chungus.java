@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Creates a chungus sprite and its animation
+ * Creates a chungus sprite and its animation.
  */
 public class Chungus {
     int thicc, tall, chungx;
@@ -36,19 +36,24 @@ public class Chungus {
         frames.addAll( Arrays.asList(frame) );
     }
 
+    /**
+     * Gets the Chungus Sprite.
+     *
+     * @return the chungus sprite.
+     */
     public Sprite getChungus() {
         return chungus;
     }
+} // Chungus
 
-    public Sprite getFrame() {
+// potential method change the frames of the Chungus.
+/**
+   public Sprite getFrame() {
 
-        if ( chungx > 1 ) {
-            chungx = 0;
-        }
-
-        return frames.get( chungx++ );
+   if ( chungx > 1 ) {
+   chungx = 0;
     }
 
-
-
-} // Chungus
+    return frames.get( chungx++ );
+    }
+*/
