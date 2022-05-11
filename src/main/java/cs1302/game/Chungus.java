@@ -19,7 +19,7 @@ public class Chungus {
     public Chungus() {
 
         frames = new ArrayList<>();
-        xpos = 70.0;
+        xpos = 100.0;
         ypos = 210.0;
         thicc = 50;
         tall = 50;
@@ -47,7 +47,7 @@ public class Chungus {
 
     public Sprite getFrame() {
 
-        if ( chungx == 3 ) {
+        if ( chungx > 3 ) {
             chungx = 0;
         }
 
