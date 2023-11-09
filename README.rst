@@ -23,13 +23,14 @@ ALL ART/ SPRITES WERE DESIGNED BY ME IN PHOTOSHOP, I MAY CHOOSE NOT TO CITE CERT
              
          
          CITATIONS
-         ~ kamala harris: https://media.newyorker.com/photos/5d2c944535c4e3000858c193/master/w_2240,c_limit/190722_r34642web.jpg
+
+         ~ VP-Harris: https://media.newyorker.com/photos/5d2c944535c4e3000858c193/master/w_2240,c_limit/190722_r34642web.jpg
          
-         ~ sam hyde: https://preview.redd.it/dzo1ny8kyot01.jpg?auto=webp&s=88e939acd110b9abffe742faccd8f85ce1f3443f
+         ~ Ghost-of-Kyiv: https://preview.redd.it/dzo1ny8kyot01.jpg?auto=webp&s=88e939acd110b9abffe742faccd8f85ce1f3443f
          
-         ~ spoundebob: https://i.kym-cdn.com/entries/icons/facebook/000/035/935/cover3.jpg
+         ~ spounge: https://i.kym-cdn.com/entries/icons/facebook/000/035/935/cover3.jpg
          
-         ~ free hongkong: https://ih1.redbubble.net/image.1433542286.4238/st,small,507x507-pad,600x600,f8f8f8.jpg
+         ~ political statement: https://ih1.redbubble.net/image.1433542286.4238/st,small,507x507-pad,600x600,f8f8f8.jpg
 
 .. project information
 .. |title| replace:: Omega
